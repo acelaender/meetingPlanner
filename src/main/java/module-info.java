@@ -5,4 +5,6 @@ module at.fhtw.swen2.meetingplanner {
 
     opens at.fhtw.swen2.meetingplanner to javafx.fxml;
     exports at.fhtw.swen2.meetingplanner;
+    exports at.fhtw.swen2.meetingplanner.controller;
+    opens at.fhtw.swen2.meetingplanner.controller to javafx.fxml;
 }

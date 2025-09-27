@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="at.fhtw.swen2.meetingplanner.controller.AddMeetingViewController"
+            prefHeight="400.0" prefWidth="600.0">
+    <VBox fx:id="createMeetingForm" prefHeight="200.0" prefWidth="100.0">
+        <children>
+            <Label text="Create new Meeting" />
+            <Label text="Meeting Title" />
+            <TextField promptText="Enter Meeting Title" />
+            <HBox prefHeight="100.0" prefWidth="200.0">
+                <children>
+                    <VBox prefHeight="200.0" prefWidth="100.0">
+                        <children>
+                            <Label text="Starting time" />
+                            <TextField promptText="Enter Start Time" />
+                        </children>
+                    </VBox>
+                    <VBox prefHeight="200.0" prefWidth="100.0">
+                        <children>
+                            <Label text="Ending Time" />
+                            <TextField promptText="Enter end time" />
+                        </children>
+                    </VBox>
+                </children></HBox>
+            <Label text="Agenda" />
+            <TextArea prefHeight="200.0" prefWidth="200.0" />
+            <Button mnemonicParsing="false" text="Create Meeting" />
+        </children></VBox>
+</AnchorPane>
