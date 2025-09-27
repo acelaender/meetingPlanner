@@ -1,12 +1,10 @@
 package at.fhtw.swen2.meetingplanner.controller;
 
-import at.fhtw.swen2.meetingplanner.HelloApplication;
 import at.fhtw.swen2.meetingplanner.viewModel.MainViewModel;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.layout.StackPane;
-import javafx.scene.layout.VBox;
 
 import java.io.IOException;
 
