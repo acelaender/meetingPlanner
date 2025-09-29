@@ -11,6 +11,8 @@
              <Label>Meeting Planner</Label>
             <Button mnemonicParsing="false" onAction="#onAddMeetingButtonClick" text="+ New Meeting" />
             <StackPane fx:id="formContainer" />
+            <Button fx:id="refreshButton" onAction="#onRefreshButtonClick"/>
+            <VBox fx:id="meetingListContainer"/>
          </children>
          <padding>
             <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />

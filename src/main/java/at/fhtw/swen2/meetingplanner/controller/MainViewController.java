@@ -1,10 +1,12 @@
 package at.fhtw.swen2.meetingplanner.controller;
 
+import at.fhtw.swen2.meetingplanner.bl.model.Meeting;
 import at.fhtw.swen2.meetingplanner.viewModel.MainViewModel;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.stereotype.Component;
 
@@ -17,6 +19,7 @@ public class MainViewController {
     private final MainViewModel mainViewModel;
     private Node formNode;
     @FXML private StackPane formContainer;
+    @FXML private VBox meetingListContainer;
 
     public MainViewController(ConfigurableApplicationContext springContext, MainViewModel mainViewModel){
         this.springContext = springContext;
@@ -32,10 +35,34 @@ public class MainViewController {
         formContainer.getChildren().add(formNode);
         formNode.visibleProperty().bind(mainViewModel.showDetailsProperty());
         formNode.managedProperty().bind(mainViewModel.showDetailsProperty());
+
+        mainViewModel.getMeetings().addListener((javafx.collections.ListChangeListener.Change<? extends Meeting> c) -> refreshMeetingList());
+        refreshMeetingList();
     }
 
     @FXML
     protected void onAddMeetingButtonClick(){
         mainViewModel.toggleDetails();
+    }
+
+    @FXML
+    protected void onRefreshButtonClick() {
+        refreshMeetingList();
+    }
+
+    private void refreshMeetingList() {
+        meetingListContainer.getChildren().clear();
+
+        for(Meeting meeting : mainViewModel.getMeetings()) {
+            try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/at/fhtw/swen2/meetingplanner/view/meeting-card-view.fxml"));
+                VBox card = loader.load();
+                MeetingCardViewController controller = loader.getController();
+                controller.setMeeting(meeting);
+                meetingListContainer.getChildren().add(card);
+            } catch (Exception e){
+                e.printStackTrace();
+            }
+        }
     }
 }
