@@ -8,6 +8,7 @@ module at.fhtw.swen2.meetingplanner {
     requires spring.boot.autoconfigure;
     requires spring.boot;
     requires spring.data.jpa;
+    requires spring.context;
 
 
     opens at.fhtw.swen2.meetingplanner;///* to javafx.fxml, spring.core, spring.beans, spring.context*/;
