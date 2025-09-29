@@ -1,0 +1,6 @@
+Notes:
+    added 2 jvm commands: --add-opens=java.base/java.lang=ALL-UNNAMED --add-opens at.fhtw.swen2.meetingplanner/at.fhtw.swen2.meetingplanner.dal.entity=ALL-UNNAMED
+ --add-reads at.fhtw.swen2.meetingplanner=ALL-UNNAMED
+    because java doesnt read and open automatically to spring
+
+    declared temporary h2 in-memory db in application.properties, for the future postgresql has to be declared and used

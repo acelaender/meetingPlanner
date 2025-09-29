@@ -10,8 +10,10 @@ module at.fhtw.swen2.meetingplanner {
     requires spring.data.jpa;
 
 
-    opens at.fhtw.swen2.meetingplanner to javafx.fxml, spring.core, spring.beans;
+    opens at.fhtw.swen2.meetingplanner;///* to javafx.fxml, spring.core, spring.beans, spring.context*/;
+    opens at.fhtw.swen2.meetingplanner.bl.model;///* to org.hibernate.orm.core*/; //JPA entities
+    opens at.fhtw.swen2.meetingplanner.controller;///* to javafx.fxml*/;
     exports at.fhtw.swen2.meetingplanner;
+    exports at.fhtw.swen2.meetingplanner.bl.model;
     exports at.fhtw.swen2.meetingplanner.controller;
-    opens at.fhtw.swen2.meetingplanner.controller to javafx.fxml;
 }

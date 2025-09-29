@@ -12,7 +12,8 @@ import java.io.IOException;
 @SpringBootApplication()
 public class MeetingPlannerApplication extends Application {
     public static void main(String[] args) {
-        SpringApplication.run(MeetingPlannerApplication.class, args);
+        var context = SpringApplication.run(MeetingPlannerApplication.class, args);
+        launch(args);
     }
 
     @Override

@@ -1,4 +1,4 @@
-package at.fhtw.swen2.meetingplanner.bl.model;
+package at.fhtw.swen2.meetingplanner.dal.entity;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
@@ -23,11 +23,11 @@ public class NoteEntity {
     @ManyToOne(optional = false)
     @JoinColumn(name="meeting_id", nullable = false, updatable = false)
     @Setter
-    private Meeting meeting;
+    private MeetingEntity meetingEntity;
 
-    public NoteEntity(String title, String content, Meeting meeting) {
+    public NoteEntity(String title, String content, MeetingEntity meeting) {
         this.title = title;
         this.content = content;
-        this.meeting = meeting;
+        this.meetingEntity = meeting;
     }
 }
