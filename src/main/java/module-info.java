@@ -9,6 +9,7 @@ module at.fhtw.swen2.meetingplanner {
     requires spring.boot;
     requires spring.data.jpa;
     requires spring.context;
+    requires org.apache.logging.log4j;
 
 
     opens at.fhtw.swen2.meetingplanner;///* to javafx.fxml, spring.core, spring.beans, spring.context*/;

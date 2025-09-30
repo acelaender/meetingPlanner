@@ -28,6 +28,7 @@ public class MainViewModel {
     }
 
     public ObservableList<Meeting> getMeetings(){
+        loadMeetings();
         return this.meetings;
     }
 

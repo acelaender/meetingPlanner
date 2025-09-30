@@ -36,7 +36,6 @@ public class MainViewController {
         formNode.visibleProperty().bind(mainViewModel.showDetailsProperty());
         formNode.managedProperty().bind(mainViewModel.showDetailsProperty());
 
-        mainViewModel.getMeetings().addListener((javafx.collections.ListChangeListener.Change<? extends Meeting> c) -> refreshMeetingList());
         refreshMeetingList();
     }
 

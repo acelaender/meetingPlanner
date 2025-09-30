@@ -5,6 +5,9 @@ import at.fhtw.swen2.meetingplanner.dal.entity.MeetingEntity;
 import at.fhtw.swen2.meetingplanner.bl.model.*;
 import at.fhtw.swen2.meetingplanner.dal.repository.meetingRepository;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -16,6 +19,7 @@ public class MeetingService {
 
     private final meetingRepository meetingRepository;
     private final MeetingMapper meetingMapper = new MeetingMapper();
+    private static final Logger logger = LogManager.getLogger(MeetingService.class);
 
     public MeetingService(meetingRepository meetingRepository) {
         this.meetingRepository = meetingRepository;
