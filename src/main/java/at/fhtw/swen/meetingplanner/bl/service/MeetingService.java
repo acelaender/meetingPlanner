@@ -1,0 +1,61 @@
+package at.fhtw.swen.meetingplanner.bl.service;
+
+import at.fhtw.swen.meetingplanner.bl.mapper.MeetingMapper;
+import at.fhtw.swen.meetingplanner.bl.model.Meeting;
+import at.fhtw.swen.meetingplanner.dal.repository.meetingRepository;
+import at.fhtw.swen.meetingplanner.dal.entity.MeetingEntity;
+import at.fhtw.swen.meetingplanner.bl.model.*;
+
+import jakarta.persistence.EntityNotFoundException;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+import java.time.LocalTime;
+import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.stereotype.Service;
+
+@Service
+public class MeetingService {
+    //TODO create Meeting can probably also be done with meeting
+    private final at.fhtw.swen.meetingplanner.dal.repository.meetingRepository meetingRepository;
+    private final MeetingMapper meetingMapper = new MeetingMapper();
+    private static final Logger logger = LogManager.getLogger(MeetingService.class);
+
+    public MeetingService(meetingRepository meetingRepository) {
+        this.meetingRepository = meetingRepository;
+    }
+
+    public Meeting createMeeting(String title, LocalTime startTime, LocalTime endTime, String agenda) {
+        MeetingEntity meeting = new MeetingEntity(title, startTime, endTime, agenda);
+        return meetingMapper.toMeeting(meetingRepository.save(meeting));
+    }
+
+    public List<Meeting> getAllMeetings(){
+        List<Meeting> meetings = new ArrayList<>();
+        List<MeetingEntity> meetingEntities = meetingRepository.findAll();
+        for (int i = 0; i < meetingEntities.size(); i++) {
+            meetings.add(meetingMapper.toMeeting(meetingEntities.get(i)));
+        }
+        return meetings;
+    }
+
+    public MeetingEntity getMeetingById(int id){
+        return meetingRepository.findById(id)
+                .orElseThrow(() -> new EntityNotFoundException("Meeting with ID: " + id + " not found"));
+    }
+
+    public void deleteMeeting(Meeting meeting) {
+        MeetingEntity meetingEntity = meetingMapper.toMeetingEntity(meeting);
+        meetingEntity.setId(meeting.getId());
+
+        meetingRepository.delete(meetingEntity);
+    }
+
+    public Meeting updateMeeting(Meeting meeting){
+        MeetingEntity entity = meetingMapper.toMeetingEntity(meeting);
+        entity.setId(meeting.getId());
+        return meetingMapper.toMeeting(meetingRepository.save(entity));
+    }
+}
