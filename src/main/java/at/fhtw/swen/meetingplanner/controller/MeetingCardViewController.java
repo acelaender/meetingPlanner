@@ -7,6 +7,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import org.springframework.stereotype.Component;
 
+import java.util.function.Consumer;
+
 @Component
 public class MeetingCardViewController {
     @FXML private Label titleLabel;
@@ -17,6 +19,8 @@ public class MeetingCardViewController {
     @FXML private Button expandMeetingButton;
 
     private final MeetingCardViewModel meetingCardViewModel;
+
+    private Consumer<Meeting> onShowDetails;
 
     public MeetingCardViewController(MeetingCardViewModel meetingCardViewModel) {
         this.meetingCardViewModel = meetingCardViewModel;
@@ -34,6 +38,9 @@ public class MeetingCardViewController {
         meetingCardViewModel.setMeeting(meeting);
     }
 
+    public void setOnShowDetails(Consumer<Meeting> listener){
+        this.onShowDetails = listener;
+    }
 
     //callback method ondelete
 }

@@ -20,6 +20,7 @@ public class MainViewController {
     private Node formNode;
     @FXML private StackPane formContainer;
     @FXML private VBox meetingListContainer;
+    @FXML private VBox meetingDetailsContainer;
 
     public MainViewController(ConfigurableApplicationContext springContext, MainViewModel mainViewModel){
         this.springContext = springContext;
@@ -60,10 +61,28 @@ public class MainViewController {
                 VBox card = loader.load();
                 MeetingCardViewController controller = loader.getController();
                 controller.setMeeting(meeting);
+
+                controller.setOnShowDetails(this::showMeetingDetails);
                 meetingListContainer.getChildren().add(card);
             } catch (Exception e){
                 e.printStackTrace();
             }
+        }
+    }
+
+    private void showMeetingDetails(Meeting meeting) {
+        try {
+            meetingDetailsContainer.getChildren().clear();
+
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/at/fhtw/swen/meetingplanner/view/meeting-details-view.fxml"));
+            Node detailsView = loader.load();
+
+            MeetingDetailController detailsController = loader.getController();
+            detailsController.setMeeting(meeting);
+
+            meetingDetailsContainer.getChildren().add(detailsView);
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 }
