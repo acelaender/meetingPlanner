@@ -1,48 +1,33 @@
 package at.fhtw.swen.meetingplanner.bl.model;
 
+import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
+@Entity
+@NoArgsConstructor
+@Getter
+@Setter
 public class Note {
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+    @NotNull(message = "title cannot be null")
+    @NotBlank(message = "title cannot be blank")
     private String title;
+    @NotNull(message = "content cannot be null")
     private String content;
-    private Meeting meeting;
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public String getContent() {
-        return content;
-    }
-
-    public void setContent(String content) {
-        this.content = content;
-    }
-
-    public Meeting getMeeting() {
-        return meeting;
-    }
-
-    public void setMeeting(Meeting meeting) {
-        this.meeting = meeting;
-    }
+    @ManyToOne(optional = false)
+    @JoinColumn(name="meeting_id", nullable = false, updatable = false)
+    @Setter
+    private Meeting meetingEntity;
 
     public Note(String title, String content, Meeting meeting) {
         this.title = title;
         this.content = content;
-        this.meeting = meeting;
+        this.meetingEntity = meeting;
     }
 }
