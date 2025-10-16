@@ -1,6 +1,5 @@
 package at.fhtw.swen.meetingplanner.bl.model;
 
-import at.fhtw.swen.meetingplanner.dal.entity.NoteEntity;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -30,7 +29,7 @@ public class Meeting {
     private String agenda;
 
     @OneToMany(mappedBy = "meetingEntity", cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
-    private final List<NoteEntity> notes = new ArrayList<>();
+    private final List<Note> notes = new ArrayList<>();
 
     public Meeting(String title, LocalTime startTime, LocalTime endTime, String agenda) {
         this.title = title;
