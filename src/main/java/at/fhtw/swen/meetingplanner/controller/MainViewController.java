@@ -60,9 +60,12 @@ public class MainViewController {
 
                 VBox card = loader.load();
                 MeetingCardViewController controller = loader.getController();
-                controller.setMeeting(meeting);
 
-                controller.setOnShowDetails(this::showMeetingDetails);
+                //Setting Meeting and button-Callback-Actions in meetingCards
+                controller.setMeeting(meeting);
+                controller.setOnShowDetails(() -> showMeetingDetails(meeting));
+                controller.setOnDelete(this::refreshMeetingList);
+
                 meetingListContainer.getChildren().add(card);
             } catch (Exception e){
                 e.printStackTrace();
@@ -74,8 +77,9 @@ public class MainViewController {
         try {
             meetingDetailsContainer.getChildren().clear();
 
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/at/fhtw/swen/meetingplanner/view/meeting-details-view.fxml"));
-            Node detailsView = loader.load();
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/at/fhtw/swen/meetingplanner/view/meeting-detail-view.fxml"));
+            loader.setControllerFactory(springContext::getBean);
+            VBox detailsView = loader.load();
 
             MeetingDetailController detailsController = loader.getController();
             detailsController.setMeeting(meeting);

@@ -20,7 +20,6 @@ public class MeetingCardViewController {
 
     private final MeetingCardViewModel meetingCardViewModel;
 
-    private Consumer<Meeting> onShowDetails;
 
     public MeetingCardViewController(MeetingCardViewModel meetingCardViewModel) {
         this.meetingCardViewModel = meetingCardViewModel;
@@ -32,15 +31,26 @@ public class MeetingCardViewController {
         agendaLabel.textProperty().bindBidirectional(meetingCardViewModel.agendaProperty());
     }
 
-    //TODO setMeeting should probably be done by viewmodel ,
-    //TODO IMPORTANT!!!!!!! delete Meeting import
+    @FXML
+    protected void onExpandMeetingButtonClick(){
+        meetingCardViewModel.showDetails();
+    }
+
+    @FXML
+    protected void onDeleteButtonClick(){
+        meetingCardViewModel.deleteMeeting();
+    }
+
     public void setMeeting(Meeting meeting){
         meetingCardViewModel.setMeeting(meeting);
     }
 
-    public void setOnShowDetails(Consumer<Meeting> listener){
-        this.onShowDetails = listener;
+    public void setOnShowDetails(Runnable onShowDetails){
+        meetingCardViewModel.setOnShowDetails(onShowDetails);
     }
 
-    //callback method ondelete
+    public void setOnDelete(Runnable onDelete) {
+        meetingCardViewModel.setOnDelete(onDelete);
+    }
+
 }

@@ -26,6 +26,7 @@ public class MeetingService {
 
     public Meeting createMeeting(String title, LocalTime startTime, LocalTime endTime, String agenda) {
         Meeting meeting = new Meeting(title, startTime, endTime, agenda);
+        logger.info("Creating Meeting: " + meeting.toString());
         return meetingRepository.save(meeting);
     }
 
@@ -39,10 +40,12 @@ public class MeetingService {
     }
 
     public void deleteMeeting(Meeting meeting) {
+        logger.info("Deleting Meeting: " + meeting.toString());
         meetingRepository.delete(meeting);
     }
 
     public Meeting updateMeeting(Meeting meeting){
+        logger.info("Updating Meeting: " + meeting);
         return meetingRepository.save(meeting);
     }
 }

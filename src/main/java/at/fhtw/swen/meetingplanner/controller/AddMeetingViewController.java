@@ -33,6 +33,8 @@ public class AddMeetingViewController {
         startTimeField.textProperty().bindBidirectional(addMeetingViewModel.startTimeProperty(), converter);
         endTimeField.textProperty().bindBidirectional(addMeetingViewModel.endTimeProperty(), converter);
 
+        agendaArea.textProperty().bindBidirectional(addMeetingViewModel.agendaProperty());
+
         saveButton.setOnAction(e -> addMeetingViewModel.saveMeeting());
     }
 }

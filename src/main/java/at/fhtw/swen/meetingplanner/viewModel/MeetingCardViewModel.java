@@ -11,6 +11,8 @@ import java.time.LocalTime;
 public class MeetingCardViewModel {
     private Meeting meeting = null;
     private final MeetingService meetingService;
+    private Runnable onShowDetails;
+    private Runnable onDelete;
 
     private final IntegerProperty id = new SimpleIntegerProperty();
     private final StringProperty title = new SimpleStringProperty();
@@ -31,33 +33,30 @@ public class MeetingCardViewModel {
         this.agenda.set(meeting.getAgenda());
     }
 
-    public String getTitle() {
-        return title.get();
+    public void deleteMeeting(){
+        meetingService.deleteMeeting(this.meeting);
+        if(this.onDelete != null){
+            this.onDelete.run();
+        }
+    }
+
+    public void setOnDelete(Runnable callback){
+        this.onDelete = callback;
+    }
+    public void setOnShowDetails(Runnable callback) {
+        this.onShowDetails = callback;
+    }
+
+    public void showDetails() {
+        if (onShowDetails != null) {
+            onShowDetails.run();
+        }
     }
 
     public StringProperty titleProperty() {
         return title;
     }
 
-    public LocalTime getStartTime() {
-        return startTime.get();
-    }
-
-    public ObjectProperty<LocalTime> startTimeProperty() {
-        return startTime;
-    }
-
-    public LocalTime getEndTime() {
-        return endTime.get();
-    }
-
-    public ObjectProperty<LocalTime> endTimeProperty() {
-        return endTime;
-    }
-
-    public String getAgenda() {
-        return agenda.get();
-    }
 
     public StringProperty agendaProperty() {
         return agenda;

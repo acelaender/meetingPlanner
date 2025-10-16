@@ -25,8 +25,9 @@ public class MeetingPlannerApplication extends Application {
         FXMLLoader fxmlLoader = new FXMLLoader(MeetingPlannerApplication.class.getResource("view/main-view.fxml"));
 
         fxmlLoader.setControllerFactory(context::getBean);
-        Scene scene = new Scene(fxmlLoader.load(), 320, 240);
-        stage.setTitle("Hello!");
+        Scene scene = new Scene(fxmlLoader.load(), 1000, 700);
+        scene.getStylesheets().add(getClass().getResource("/at/fhtw/swen/meetingplanner/styles/main.css").toExternalForm());
+        stage.setTitle("MeetingPlanner");
         stage.setScene(scene);
         stage.show();
     }

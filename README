@@ -4,3 +4,16 @@ Notes:
     because java doesnt read and open automatically to spring
 
     declared temporary h2 in-memory db in application.properties, for the future postgresql has to be declared and used
+
+BIG TODOS:
+TODO 1: Edit Meetings
+TODO 2: Create notes
+TODO 3: Edit Notes
+TODO 4: Delete Notes
+TODO 5: adding testing
+TODO 6: report-Generation
+TODO 7: Logging
+
+
+SMALL TODOS:
+    TODO 1: focus border in text-inputs should be black

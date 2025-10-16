@@ -4,24 +4,34 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="at.fhtw.swen.meetingplanner.controller.MainViewController">
+<AnchorPane xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="at.fhtw.swen.meetingplanner.controller.MainViewController">
    <children>
-      <HBox prefHeight="100.0" prefWidth="200.0">
-         <children>
-            <VBox prefHeight="400.0" prefWidth="600.0" spacing="1.0">
-               <children>
-                   <Label>Meeting Planner</Label>
-                  <Button mnemonicParsing="false" onAction="#onAddMeetingButtonClick" text="+ New Meeting" />
-                  <StackPane fx:id="formContainer" />
-                  <Button fx:id="refreshButton" onAction="#onRefreshButtonClick" text="refresh" />
-                  <VBox fx:id="meetingListContainer" />
-               </children>
+      <SplitPane dividerPositions="0.5" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <items>
+            <ScrollPane fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER">
+               <content>
+                  <VBox maxWidth="Infinity" spacing="1.0">
+                     <children>
+                         <Label styleClass="title-label">Meeting Planner</Label>
+                        <Button mnemonicParsing="false" onAction="#onAddMeetingButtonClick" styleClass="black-button" text="+ New Meeting" />
+                        <StackPane fx:id="formContainer" />
+                        <Button fx:id="refreshButton" onAction="#onRefreshButtonClick" text="refresh" />
+                        <VBox fx:id="meetingListContainer" />
+                     </children>
+                     <padding>
+                        <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
+                     </padding>
+                  </VBox>
+               </content>
                <padding>
-                  <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </padding>
-            </VBox>
-            <VBox fx:id="meetingDetailsContainer" prefHeight="200.0" prefWidth="100.0" />
-         </children>
-      </HBox>
+            </ScrollPane>
+            <VBox fx:id="meetingDetailsContainer" prefHeight="200.0" prefWidth="100.0">
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </padding></VBox>
+         </items>
+      </SplitPane>
    </children>
 </AnchorPane>
