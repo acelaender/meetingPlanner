@@ -5,6 +5,7 @@ import at.fhtw.swen.meetingplanner.viewModel.MeetingCardViewModel;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 import java.util.function.Consumer;
@@ -23,6 +24,7 @@ public class MeetingCardViewController {
 
     public MeetingCardViewController(MeetingCardViewModel meetingCardViewModel) {
         this.meetingCardViewModel = meetingCardViewModel;
+        System.out.println("New MeetingCardViewController: " + this);
     }
 
     @FXML

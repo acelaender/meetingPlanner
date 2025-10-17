@@ -17,3 +17,5 @@ TODO 7: Logging
 
 SMALL TODOS:
     TODO 1: focus border in text-inputs should be black
+    TODO 2: set runnable on saveNote to close addNoteWindow and refresh notes
+    TODO 3: refresh meetings as addMeeting-Callback runnable

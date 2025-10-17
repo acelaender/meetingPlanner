@@ -15,6 +15,11 @@ public class MeetingDetailViewModel {
     private final ObjectProperty<LocalTime> startTime = new SimpleObjectProperty<>();
     private final ObjectProperty<LocalTime> endTime = new SimpleObjectProperty<>();
     private final StringProperty agenda = new SimpleStringProperty();
+    private final BooleanProperty showAddNoteForm = new SimpleBooleanProperty(false);
+
+    //TODO Rework Variables
+    private Meeting meeting;
+
 
     //TODO Note-List
 
@@ -30,6 +35,7 @@ public class MeetingDetailViewModel {
         this.startTime.set(meeting.getStartTime());
         this.endTime.set(meeting.getEndTime());
         this.agenda.set(meeting.getAgenda());
+        this.meeting = meeting;
     }
 
     public StringProperty titleProperty() {
@@ -37,5 +43,17 @@ public class MeetingDetailViewModel {
     }
     public StringProperty agendaProperty() {
         return agenda;
+    }
+
+    public void toggleAddNoteForm() {
+        showAddNoteForm.set(!showAddNoteForm.get());
+    }
+
+    public BooleanProperty showAddMeetingForm() {
+        return showAddNoteForm;
+    }
+
+    public Meeting getMeeting() {
+        return meeting;
     }
 }
