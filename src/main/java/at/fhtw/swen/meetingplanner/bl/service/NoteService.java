@@ -26,6 +26,10 @@ public class NoteService {
         return noteRepository.save(note);
     }
 
+    public void deleteNote(Note note) {
+        noteRepository.delete(note);
+    }
+
     public List<Note> getMeetingNotes(Meeting meeting){
         return noteRepository.findByMeetingEntityId(meeting.getId());
     }

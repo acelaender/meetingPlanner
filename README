@@ -7,16 +7,14 @@ Notes:
 
 BIG TODOS:
 TODO 1: Edit Meetings
-TODO 2: Get notes
-TODO 3: Edit Notes
-TODO 4: Delete Notes
-TODO 5: adding testing
-TODO 6: report-Generation
-TODO 7: Full Text Search
-TODO 8: Logging
+TODO 3: adding testing
+TODO 4: report-Generation
+TODO 5: Full Text Search
+TODO 6: Logging
 
 
 SMALL TODOS:
+    TODO 111 IMPORTANT: Fix edit notes, have to make another func in noteservice that uses note as input to update it
     TODO 1: focus border in text-inputs should be black
     TODO 2: set runnable on saveNote to close addNoteWindow and refresh notes
     TODO 3: refresh meetings as addMeeting-Callback runnable

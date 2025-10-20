@@ -1,9 +1,12 @@
 package at.fhtw.swen.meetingplanner.viewModel;
 
 import at.fhtw.swen.meetingplanner.bl.model.Meeting;
+import at.fhtw.swen.meetingplanner.bl.model.Note;
 import at.fhtw.swen.meetingplanner.bl.service.MeetingService;
 import at.fhtw.swen.meetingplanner.bl.service.NoteService;
 import javafx.beans.property.*;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalTime;
@@ -21,7 +24,7 @@ public class MeetingDetailViewModel {
     private Meeting meeting;
 
 
-    //TODO Note-List
+    private final ObservableList<Note> notes = FXCollections.observableArrayList();
 
     private final NoteService noteService;
 
@@ -55,5 +58,14 @@ public class MeetingDetailViewModel {
 
     public Meeting getMeeting() {
         return meeting;
+    }
+
+    public ObservableList<Note> getNotes(){
+        loadMeetings();
+        return this.notes;
+    }
+
+    public void loadMeetings() {
+        notes.setAll(noteService.getMeetingNotes(this.meeting));
     }
 }

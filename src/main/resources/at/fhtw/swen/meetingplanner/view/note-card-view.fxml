@@ -1,14 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="at.fhtw.swen.meetingplanner.controller.NoteCardViewController"
-            prefHeight="400.0" prefWidth="600.0">
-
-</AnchorPane>
+<VBox prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="at.fhtw.swen.meetingplanner.controller.NoteCardViewController">
+   <children>
+      <VBox prefHeight="200.0" prefWidth="100.0" styleClass="card">
+         <children>
+            <HBox alignment="TOP_RIGHT" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Button fx:id="editButton" mnemonicParsing="false" onAction="#onEditButtonClick">
+                      <graphic>
+                          <ImageView fitHeight="20" fitWidth="20" pickOnBounds="true" preserveRatio="true">
+                              <image>
+                                  <Image url="@../img/editButton.png" />
+                              </image>
+                          </ImageView>
+                      </graphic>
+                  </Button>
+                  <Button fx:id="deleteButton" mnemonicParsing="false" onAction="#onDeleteButtonClick">
+                      <graphic>
+                          <ImageView fitHeight="20" fitWidth="20" pickOnBounds="true" preserveRatio="true">
+                              <image>
+                                  <Image url="@../img/deleteButton.png" />
+                              </image>
+                          </ImageView>
+                      </graphic>
+                  </Button>
+               </children></HBox>
+            <Label fx:id="titleLabel" text="Label" />
+            <TextField fx:id="titleField" />
+            <Label fx:id="contentLabel" text="Label" />
+            <TextArea fx:id="contentArea" prefHeight="200.0" prefWidth="200.0" />
+            <Button fx:id="saveButton" mnemonicParsing="false" onAction="#onSaveButtonClick" styleClass="black-button" text="Save">
+               <VBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </VBox.margin></Button>
+         </children>
+         <VBox.margin>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+         </VBox.margin>
+      </VBox>
+   </children>
+</VBox>

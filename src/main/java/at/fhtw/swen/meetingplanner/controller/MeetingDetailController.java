@@ -1,6 +1,7 @@
 package at.fhtw.swen.meetingplanner.controller;
 
 import at.fhtw.swen.meetingplanner.bl.model.Meeting;
+import at.fhtw.swen.meetingplanner.bl.model.Note;
 import at.fhtw.swen.meetingplanner.viewModel.MeetingDetailViewModel;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -19,7 +20,9 @@ public class MeetingDetailController {
     @FXML Label titleLabel;
     @FXML Label agendaLabel;
     @FXML Button addNoteButton;
+    //Notes List
     @FXML VBox noteContainer;
+    //Add Note Form
     @FXML VBox formContainer;
 
     //Add-Note-Node
@@ -37,7 +40,6 @@ public class MeetingDetailController {
     private void initialize(){
         titleLabel.textProperty().bindBidirectional(meetingDetailViewModel.titleProperty());
         agendaLabel.textProperty().bindBidirectional(meetingDetailViewModel.agendaProperty());
-
 
     }
 
@@ -60,5 +62,30 @@ public class MeetingDetailController {
         formContainer.getChildren().add(formNode);
         formNode.visibleProperty().bind(meetingDetailViewModel.showAddMeetingForm());
         formNode.managedProperty().bind(meetingDetailViewModel.showAddMeetingForm());
+
+        refreshNoteList();
+    }
+
+    private void refreshNoteList() {
+        noteContainer.getChildren().clear();
+
+        for(Note note : meetingDetailViewModel.getNotes()) {
+            try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/at/fhtw/swen/meetingplanner/view/note-card-view.fxml"));
+                loader.setControllerFactory(springContext::getBean);
+
+                VBox card = loader.load();
+                NoteCardViewController controller = loader.getController();
+
+                //Setting Note and delete-Button-Callback
+                controller.setNote(note);
+                controller.setMeeting(meetingDetailViewModel.getMeeting());
+                controller.setOnDelete(this::refreshNoteList);
+
+                noteContainer.getChildren().add(card);
+            } catch (Exception e){
+                e.printStackTrace();
+            }
+        }
     }
 }

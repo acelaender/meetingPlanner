@@ -6,7 +6,7 @@
 
 <VBox prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="at.fhtw.swen.meetingplanner.controller.AddNoteViewController">
    <children>
-      <VBox prefHeight="200.0" prefWidth="100.0" style="-fx-border-color: #c7c7c7; -fx-border-radius: 10;">
+      <VBox prefHeight="200.0" prefWidth="100.0" styleClass="card">
          <VBox.margin>
             <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
          </VBox.margin>

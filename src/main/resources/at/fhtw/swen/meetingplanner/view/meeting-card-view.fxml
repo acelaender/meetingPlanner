@@ -7,7 +7,7 @@
 
 <VBox prefHeight="357.0" prefWidth="600.0" stylesheets="@../styles/meetingCard.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="at.fhtw.swen.meetingplanner.controller.MeetingCardViewController">
    <children>
-      <VBox prefHeight="200.0" prefWidth="100.0" style="-fx-border-color: #c7c7c7; -fx-border-radius: 10;">
+      <VBox prefHeight="200.0" prefWidth="100.0" styleClass="card">
          <children>
             <HBox alignment="TOP_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="4.0">
                <children>
@@ -27,7 +27,8 @@
                               <Image url="@../img/deleteButton.png" />
                            </image>
                         </ImageView>
-                     </graphic></Button>
+                     </graphic>
+                  </Button>
                </children>
                <VBox.margin>
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
