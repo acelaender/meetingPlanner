@@ -3,11 +3,13 @@ package at.fhtw.swen.meetingplanner.viewModel;
 import at.fhtw.swen.meetingplanner.bl.model.Meeting;
 import at.fhtw.swen.meetingplanner.bl.service.MeetingService;
 import javafx.beans.property.*;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalTime;
 
 @Component
+@Scope("prototype")
 public class MeetingCardViewModel {
     private Meeting meeting = null;
     private final MeetingService meetingService;

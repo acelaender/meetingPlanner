@@ -14,10 +14,13 @@ public class AddMeetingViewModel {
 
     private final MeetingService meetingService;
 
-    private final StringProperty title = new SimpleStringProperty();
+    private final StringProperty title = new SimpleStringProperty("");
     private final ObjectProperty<LocalTime> startTime = new SimpleObjectProperty<>();
     private final ObjectProperty<LocalTime> endTime = new SimpleObjectProperty<>();
     private final StringProperty agenda = new SimpleStringProperty();
+
+    private final StringProperty titleErrorProperty = new SimpleStringProperty("");
+    private final StringProperty timeErrorProperty = new SimpleStringProperty("");
 
 
     public StringProperty titleProperty() { return title; }
@@ -33,7 +36,27 @@ public class AddMeetingViewModel {
 
 
     public void saveMeeting() {
-        meetingService.createMeeting(title.get(), startTime.get(), endTime.get(), agenda.get());
+        setErrorsBlank();
+        if(title.getValue().isBlank()){
+            titleErrorProperty.set("This Field cannot be empty!");
+        }else if(startTime.get() == null || endTime.get() == null){
+            timeErrorProperty.set("This Field cannot be empty!");
+        }else{
+            meetingService.createMeeting(title.get(), startTime.get(), endTime.get(), agenda.get());
+        }
+    }
+
+    public StringProperty titleErrorProperty() {
+        return this.titleErrorProperty;
+    }
+
+    public StringProperty timeErrorProperty() {
+        return this.timeErrorProperty;
+    }
+
+    public void setErrorsBlank() {
+        this.titleErrorProperty.set("");
+        this.timeErrorProperty.set("");
     }
 
 }

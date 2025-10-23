@@ -11,6 +11,7 @@ import org.springframework.stereotype.Component;
 import java.util.function.Consumer;
 
 @Component
+@Scope("prototype")
 public class MeetingCardViewController {
     @FXML private Label titleLabel;
     @FXML private Label timeLabel;

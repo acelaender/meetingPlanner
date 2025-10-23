@@ -14,8 +14,10 @@
             <Label text="Add New Note" />
             <Label text="Note Title" />
             <TextField fx:id="titleField" promptText="Enter Meeting Title" />
+            <Label fx:id="titleErrorLabel" styleClass="warning-label" />
             <Label text="Note Content" />
             <TextArea fx:id="contentArea" prefHeight="200.0" prefWidth="200.0" promptText="Enter your Note" />
+            <Label fx:id="contentErrorLabel" styleClass="warning-label" />
             <Button fx:id="saveButton" mnemonicParsing="false" onAction="#onSaveButtonClick" styleClass="black-button" text="Add Note" />
          </children>
          <padding>

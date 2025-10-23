@@ -3,6 +3,7 @@ package at.fhtw.swen.meetingplanner.controller;
 import at.fhtw.swen.meetingplanner.viewModel.AddMeetingViewModel;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.util.converter.LocalTimeStringConverter;
@@ -20,6 +21,10 @@ public class AddMeetingViewController {
     @FXML private TextArea agendaArea;
     @FXML private Button saveButton;
 
+    //Validation-Fields
+    @FXML private Label titleErrorLabel;
+    @FXML private Label timeErrorLabel;
+
     public AddMeetingViewController(AddMeetingViewModel addMeetingViewModel){
         this.addMeetingViewModel = addMeetingViewModel;
     }
@@ -36,5 +41,10 @@ public class AddMeetingViewController {
         agendaArea.textProperty().bindBidirectional(addMeetingViewModel.agendaProperty());
 
         saveButton.setOnAction(e -> addMeetingViewModel.saveMeeting());
+
+        titleErrorLabel.textProperty().bindBidirectional(addMeetingViewModel.titleErrorProperty());
+        timeErrorLabel.textProperty().bindBidirectional(addMeetingViewModel.timeErrorProperty());
     }
+
+
 }

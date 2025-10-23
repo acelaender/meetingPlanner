@@ -10,6 +10,7 @@ import javafx.collections.ObservableList;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 
 @Component
 public class MeetingDetailViewModel {
@@ -19,6 +20,10 @@ public class MeetingDetailViewModel {
     private final ObjectProperty<LocalTime> endTime = new SimpleObjectProperty<>();
     private final StringProperty agenda = new SimpleStringProperty();
     private final BooleanProperty showAddNoteForm = new SimpleBooleanProperty(false);
+    //EDIT MEETING//
+    private final BooleanProperty showEditMeeting = new SimpleBooleanProperty(false);
+    private Runnable onSave;
+
 
     //TODO Rework Variables
     private Meeting meeting;
@@ -27,9 +32,11 @@ public class MeetingDetailViewModel {
     private final ObservableList<Note> notes = FXCollections.observableArrayList();
 
     private final NoteService noteService;
+    private final MeetingService meetingService;
 
-    public MeetingDetailViewModel(NoteService noteService) {
+    public MeetingDetailViewModel(NoteService noteService, MeetingService meetingService) {
         this.noteService = noteService;
+        this.meetingService = meetingService;
     }
 
     public void setMeeting(Meeting meeting){
@@ -47,14 +54,30 @@ public class MeetingDetailViewModel {
     public StringProperty agendaProperty() {
         return agenda;
     }
+    public ObjectProperty startTimeProperty() {
+        return this.startTime;
+    }
+    public ObjectProperty endTimeProperty() {
+        return this.endTime;
+    }
+    public LocalTime startTime(){
+        return this.startTime.get();
+    }
+    public  LocalTime endTime(){
+        return this.endTime.get();
+    }
 
     public void toggleAddNoteForm() {
         showAddNoteForm.set(!showAddNoteForm.get());
     }
 
+    public void toggleEditMeeting() {
+        showEditMeeting.set(!showEditMeeting.get());
+    }
     public BooleanProperty showAddMeetingForm() {
         return showAddNoteForm;
     }
+    public BooleanProperty editNoteProperty() { return showEditMeeting; }
 
     public Meeting getMeeting() {
         return meeting;
@@ -63,6 +86,14 @@ public class MeetingDetailViewModel {
     public ObservableList<Note> getNotes(){
         loadMeetings();
         return this.notes;
+    }
+
+    public void saveMeeting(){
+        this.meeting.setTitle(title.get());
+        this.meeting.setAgenda(agenda.get());
+        this.meeting.setStartTime(startTime.get());
+        this.meeting.setEndTime(endTime.get());
+        meetingService.updateMeeting(meeting);
     }
 
     public void loadMeetings() {

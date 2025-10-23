@@ -6,7 +6,6 @@ Notes:
     declared temporary h2 in-memory db in application.properties, for the future postgresql has to be declared and used
 
 BIG TODOS:
-TODO 1: Edit Meetings
 TODO 3: adding testing
 TODO 4: report-Generation
 TODO 5: Full Text Search
@@ -18,3 +17,4 @@ SMALL TODOS:
     TODO 1: focus border in text-inputs should be black
     TODO 2: set runnable on saveNote to close addNoteWindow and refresh notes
     TODO 3: refresh meetings as addMeeting-Callback runnable
+    TODO 4: Meeting editing text fields are not all working only time

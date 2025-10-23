@@ -8,9 +8,11 @@ import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 @Component
+@Scope("prototype")
 public class NoteCardViewModel {
 
     private Meeting meeting = null;
@@ -49,7 +51,9 @@ public class NoteCardViewModel {
     }
 
     public void editNote(){
-        noteService.createNote(title.get(), content.get(), meeting);
+        this.note.setTitle(title.get());
+        this.note.setContent(content.get());
+        noteService.updateNote(this.note);
         if(this.onDelete != null) {
             this.onDelete.run();
         }

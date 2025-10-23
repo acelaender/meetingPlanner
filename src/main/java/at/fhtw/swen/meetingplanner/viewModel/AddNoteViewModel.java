@@ -14,9 +14,11 @@ public class AddNoteViewModel {
 
     private NoteService noteService;
 
-    private final StringProperty titleProperty = new SimpleStringProperty();
-    private final StringProperty contentProperty = new SimpleStringProperty();
-
+    private final StringProperty titleProperty = new SimpleStringProperty("");
+    private final StringProperty contentProperty = new SimpleStringProperty("");
+    //ErrorStrings
+    private final StringProperty titleErrorProperty = new SimpleStringProperty("");
+    private final StringProperty contentErrorProperty = new SimpleStringProperty("");
 
     public AddNoteViewModel(NoteService noteService) {
         this.noteService = noteService;
@@ -34,9 +36,28 @@ public class AddNoteViewModel {
         return this.contentProperty;
     }
 
+    public StringProperty titleErrorProperty() {
+        return this.titleErrorProperty;
+    }
+
+    public StringProperty contentErrorProperty() {
+        return this.contentErrorProperty;
+    }
 
     public void saveNote(){
-        noteService.createNote(titleProperty.getValue(), contentProperty.getValue(), contextMeeting);
+        setErrorsBlank();
+        if(titleProperty.getValue().isBlank()){
+            titleErrorProperty.set("This Field cannot be empty!");
+        }else if(contentProperty.getValue().isBlank()){
+            contentErrorProperty.set("This Field cannot be empty!");
+        }else{
+            noteService.createNote(titleProperty.getValue(), contentProperty.getValue(), contextMeeting);
+        }
+    }
+
+    public void setErrorsBlank() {
+        this.titleErrorProperty.set("");
+        this.contentErrorProperty.set("");
     }
 
 }
