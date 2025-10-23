@@ -11,16 +11,16 @@
          <children>
             <HBox alignment="TOP_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="4.0">
                <children>
-                  <Button fx:id="editButton" mnemonicParsing="false">
+                  <Button fx:id="editButton" mnemonicParsing="false" styleClass="transparent-image-button">
                      <graphic>
-                        <ImageView fitHeight="20" fitWidth="20" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="20" fitWidth="20" pickOnBounds="true" preserveRatio="true" styleClass="transparent-image-button">
                            <image>
                               <Image url="@../img/editButton.png" />
                            </image>
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button fx:id="deleteButton" mnemonicParsing="false" onAction="#onDeleteButtonClick">
+                  <Button fx:id="deleteButton" mnemonicParsing="false" onAction="#onDeleteButtonClick" styleClass="transparent-image-button">
                      <graphic>
                         <ImageView fitHeight="20" fitWidth="20" pickOnBounds="true" preserveRatio="true">
                            <image>
