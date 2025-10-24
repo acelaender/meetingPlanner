@@ -16,6 +16,10 @@ ScrollPane, SplitPane, VBox, AnchorPane {
     -fx-font-weight: bold;
 }
 
+.title3-label {
+    -fx-font-size: 18px;
+}
+
 .black-button {
     -fx-background-color: #000000;
     -fx-text-fill: #FFFFFF;
@@ -38,7 +42,7 @@ ScrollPane, SplitPane, VBox, AnchorPane {
     -fx-background-radius: 5px;
     -fx-border-color: transparent;
     -fx-focus-color: black;
-    -fx-faint-focus-color: grey;
+    -fx-faint-focus-color: #424242;
     -fx-padding: 6px 10px;
 }
 
