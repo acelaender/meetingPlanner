@@ -11,16 +11,16 @@
          <children>
             <HBox alignment="TOP_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="4.0">
                <children>
-                  <Button fx:id="editButton" mnemonicParsing="false">
+                  <Button fx:id="editButton" mnemonicParsing="false" styleClass="transparent-image-button">
                      <graphic>
-                        <ImageView fitHeight="20" fitWidth="20" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="20" fitWidth="20" pickOnBounds="true" preserveRatio="true" styleClass="transparent-image-button">
                            <image>
                               <Image url="@../img/editButton.png" />
                            </image>
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button fx:id="deleteButton" mnemonicParsing="false" onAction="#onDeleteButtonClick">
+                  <Button fx:id="deleteButton" mnemonicParsing="false" onAction="#onDeleteButtonClick" styleClass="transparent-image-button">
                      <graphic>
                         <ImageView fitHeight="20" fitWidth="20" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -37,10 +37,13 @@
                   <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
                </padding>
             </HBox>
-            <Label fx:id="titleLabel" text="Label" />
+            <Label fx:id="titleLabel" styleClass="title2-label" text="Label" />
             <Label fx:id="timeLabel" text="Label" />
             <Label fx:id="agendaLabel" text="Label" />
-            <Button fx:id="expandMeetingButton" mnemonicParsing="false" onAction="#onExpandMeetingButtonClick" style="-fx-border-color: #c7c7c7; -fx-border-radius: 5;" styleClass="details-button" text="Show Details" />
+            <Button fx:id="expandMeetingButton" mnemonicParsing="false" onAction="#onExpandMeetingButtonClick" style="-fx-border-color: #c7c7c7; -fx-border-radius: 5;" styleClass="details-button" text="Show Details">
+               <VBox.margin>
+                  <Insets top="15.0" />
+               </VBox.margin></Button>
          </children>
          <padding>
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />

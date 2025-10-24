@@ -9,7 +9,7 @@
    <children>
       <HBox alignment="TOP_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="4.0">
          <children>
-            <Button fx:id="editButton" mnemonicParsing="false" onAction="#onEditButtonClick">
+            <Button fx:id="editButton" mnemonicParsing="false" onAction="#onEditButtonClick" styleClass="transparent-image-button">
                <graphic>
                   <ImageView fitHeight="20" fitWidth="20" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -27,8 +27,11 @@
             <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
          </padding>
       </HBox>
-      <Label fx:id="titleLabel" text="Label" />
-      <TextField fx:id="titleField" />
+      <Label fx:id="titleLabel" styleClass="title2-label" text="Label" />
+      <TextField fx:id="titleField">
+         <VBox.margin>
+            <Insets bottom="10.0" top="10.0" />
+         </VBox.margin></TextField>
       <Label fx:id="timeLabel" text="Label" />
       <HBox prefHeight="100.0" prefWidth="200.0">
          <children>
@@ -36,11 +39,20 @@
             <Label text="-" />
             <TextField fx:id="endTimeField" />
          </children>
+         <VBox.margin>
+            <Insets bottom="10.0" top="10.0" />
+         </VBox.margin>
       </HBox>
       <Label fx:id="agendaLabel" text="Label" />
-      <TextArea fx:id="agendaArea" prefHeight="200.0" prefWidth="200.0" />
+      <TextArea fx:id="agendaArea" minHeight="-Infinity" prefHeight="200.0" prefWidth="200.0">
+         <VBox.margin>
+            <Insets bottom="10.0" top="10.0" />
+         </VBox.margin></TextArea>
       <Button fx:id="saveButton" mnemonicParsing="false" onAction="#onSaveButtonClick" styleClass="black-button" text="Save" />
-      <Button fx:id="addNoteButton" mnemonicParsing="false" onAction="#onAddNoteButtonClick" styleClass="black-button" text="Add Note" />
+      <Button fx:id="addNoteButton" mnemonicParsing="false" onAction="#onAddNoteButtonClick" styleClass="black-button" text="Add Note">
+         <VBox.margin>
+            <Insets bottom="15.0" top="15.0" />
+         </VBox.margin></Button>
       <VBox fx:id="formContainer" prefHeight="200.0" prefWidth="100.0" />
       <VBox fx:id="noteContainer" prefHeight="200.0" prefWidth="100.0" />
    </children>

@@ -2,6 +2,10 @@
     -fx-background-color: white;
 }
 
+ScrollPane, SplitPane, VBox, AnchorPane {
+    -fx-background-color: white;
+}
+
 .title-label {
     -fx-font-size: 40px;
     -fx-font-weight: bold;
@@ -12,11 +16,16 @@
     -fx-font-weight: bold;
 }
 
+.title3-label {
+    -fx-font-size: 18px;
+}
+
 .black-button {
     -fx-background-color: #000000;
     -fx-text-fill: #FFFFFF;
     -fx-font-size: 14px;
     -fx-background-radius: 5px;
+
 }
 .black-button:hover {
     -fx-background-color: #222222;
@@ -33,7 +42,7 @@
     -fx-background-radius: 5px;
     -fx-border-color: transparent;
     -fx-focus-color: black;
-    -fx-faint-focus-color: grey;
+    -fx-faint-focus-color: #424242;
     -fx-padding: 6px 10px;
 }
 
@@ -46,4 +55,12 @@
 .warning-label {
     -fx-text-fill: red;
     -fx-font-size: 14px;
+}
+
+.transparent-image-button {
+    -fx-background-color: white;
+}
+
+.transparent-image-button:hover {
+    -fx-background-color: #bababa;
 }

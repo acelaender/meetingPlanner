@@ -13,7 +13,10 @@
                   <VBox maxWidth="Infinity" spacing="1.0">
                      <children>
                          <Label styleClass="title-label">Meeting Planner</Label>
-                        <Button mnemonicParsing="false" onAction="#onAddMeetingButtonClick" styleClass="black-button" text="+ New Meeting" />
+                        <Button mnemonicParsing="false" onAction="#onAddMeetingButtonClick" styleClass="black-button" text="+ New Meeting">
+                           <VBox.margin>
+                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                           </VBox.margin></Button>
                         <StackPane fx:id="formContainer" />
                         <Button fx:id="refreshButton" onAction="#onRefreshButtonClick" text="refresh" />
                         <VBox fx:id="meetingListContainer" />

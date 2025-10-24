@@ -11,7 +11,7 @@
          <children>
             <HBox alignment="TOP_RIGHT" prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <Button fx:id="editButton" mnemonicParsing="false" onAction="#onEditButtonClick">
+                  <Button fx:id="editButton" mnemonicParsing="false" onAction="#onEditButtonClick" styleClass="transparent-image-button">
                       <graphic>
                           <ImageView fitHeight="20" fitWidth="20" pickOnBounds="true" preserveRatio="true">
                               <image>
@@ -20,9 +20,9 @@
                           </ImageView>
                       </graphic>
                   </Button>
-                  <Button fx:id="deleteButton" mnemonicParsing="false" onAction="#onDeleteButtonClick">
+                  <Button fx:id="deleteButton" mnemonicParsing="false" onAction="#onDeleteButtonClick" styleClass="transparent-image-button">
                       <graphic>
-                          <ImageView fitHeight="20" fitWidth="20" pickOnBounds="true" preserveRatio="true">
+                          <ImageView fitHeight="20" fitWidth="20" pickOnBounds="true" preserveRatio="true" styleClass="transparent-image-button">
                               <image>
                                   <Image url="@../img/deleteButton.png" />
                               </image>
@@ -31,9 +31,15 @@
                   </Button>
                </children></HBox>
             <Label fx:id="titleLabel" text="Label" />
-            <TextField fx:id="titleField" />
+            <TextField fx:id="titleField">
+               <VBox.margin>
+                  <Insets bottom="10.0" top="10.0" />
+               </VBox.margin></TextField>
             <Label fx:id="contentLabel" text="Label" />
-            <TextArea fx:id="contentArea" prefHeight="200.0" prefWidth="200.0" />
+            <TextArea fx:id="contentArea" minHeight="-Infinity" prefHeight="200.0" prefWidth="200.0">
+               <VBox.margin>
+                  <Insets bottom="10.0" top="10.0" />
+               </VBox.margin></TextArea>
             <Button fx:id="saveButton" mnemonicParsing="false" onAction="#onSaveButtonClick" styleClass="black-button" text="Save">
                <VBox.margin>
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
