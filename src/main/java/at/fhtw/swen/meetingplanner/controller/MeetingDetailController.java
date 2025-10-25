@@ -12,10 +12,13 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 import javafx.util.converter.LocalTimeStringConverter;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.stereotype.Component;
 
+import java.io.File;
 import java.io.IOException;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
@@ -112,6 +115,29 @@ public class MeetingDetailController {
     @FXML
     protected void onEditButtonClick() {
         meetingDetailViewModel.toggleEditMeeting();
+    }
+
+    @FXML
+    protected void onExportButtonClick() {
+        Stage stage = (Stage) titleLabel.getScene().getWindow();
+
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Export Meeting Report");
+        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("PDF files (*.pdf)", "*.pdf"));
+        fileChooser.setInitialFileName("meeting-" + meetingDetailViewModel.getMeeting().getTitle() + "-report.pdf");
+
+        File file = fileChooser.showSaveDialog(stage);
+
+        if (file != null) {
+            try {
+                meetingDetailViewModel.exportMeeting(file.getAbsolutePath());
+                System.out.println("export successful");
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+
+
     }
 
     public void setMeeting(Meeting meeting) throws IOException{
