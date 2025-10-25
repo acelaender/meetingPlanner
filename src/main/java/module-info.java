@@ -10,6 +10,8 @@ module at.fhtw.swen.meetingplanner {
     requires spring.data.jpa;
     requires spring.context;
     requires org.apache.logging.log4j;
+    requires kernel;
+    requires layout;
 
 
     opens at.fhtw.swen.meetingplanner;///* to javafx.fxml, spring.core, spring.beans, spring.context*/;

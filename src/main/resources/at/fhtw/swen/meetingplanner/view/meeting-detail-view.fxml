@@ -18,7 +18,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button fx:id="exportButton" mnemonicParsing="false" text="Export" />
+            <Button fx:id="exportButton" mnemonicParsing="false" onAction="#onExportButtonClick" text="Export" />
          </children>
          <VBox.margin>
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />

@@ -4,11 +4,14 @@ import at.fhtw.swen.meetingplanner.bl.model.Meeting;
 import at.fhtw.swen.meetingplanner.bl.model.Note;
 import at.fhtw.swen.meetingplanner.bl.service.MeetingService;
 import at.fhtw.swen.meetingplanner.bl.service.NoteService;
+import at.fhtw.swen.meetingplanner.bl.service.ReportService;
 import javafx.beans.property.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import org.springframework.stereotype.Component;
 
+import java.io.File;
+import java.io.IOException;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 
@@ -33,10 +36,12 @@ public class MeetingDetailViewModel {
 
     private final NoteService noteService;
     private final MeetingService meetingService;
+    private final ReportService reportService;
 
-    public MeetingDetailViewModel(NoteService noteService, MeetingService meetingService) {
+    public MeetingDetailViewModel(NoteService noteService, MeetingService meetingService, ReportService reportService) {
         this.noteService = noteService;
         this.meetingService = meetingService;
+        this.reportService = reportService;
     }
 
     public void setMeeting(Meeting meeting){
@@ -94,6 +99,10 @@ public class MeetingDetailViewModel {
         this.meeting.setStartTime(startTime.get());
         this.meeting.setEndTime(endTime.get());
         meetingService.updateMeeting(meeting);
+    }
+
+    public File exportMeeting(String filePath) throws IOException {
+        return reportService.generateMeetingReport(this.meeting, filePath);
     }
 
     public void loadMeetings() {
