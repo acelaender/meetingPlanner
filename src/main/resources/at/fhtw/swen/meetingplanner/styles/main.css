@@ -46,6 +46,11 @@ ScrollPane, SplitPane, VBox, AnchorPane {
     -fx-padding: 6px 10px;
 }
 
+.text-field:focused, .text-area:focused {
+    -fx-border-color: black;
+    -fx-border-radius: 5px;
+}
+
 .card {
     -fx-border-radius: 10;
     -fx-border-color: #c7c7c7;

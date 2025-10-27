@@ -35,6 +35,9 @@ public class MainViewController {
         loader.setControllerFactory(springContext::getBean);
 
         formNode = loader.load();
+        AddMeetingViewController controller = loader.getController();
+        controller.setOnSave(this::addMeetingCallback);
+
         formContainer.getChildren().add(formNode);
         formNode.visibleProperty().bind(mainViewModel.showDetailsProperty());
         formNode.managedProperty().bind(mainViewModel.showDetailsProperty());
@@ -85,10 +88,20 @@ public class MainViewController {
 
             MeetingDetailController detailsController = loader.getController();
             detailsController.setMeeting(meeting);
+            detailsController.setOnClose(this::closeDetails);
 
             meetingDetailsContainer.getChildren().add(detailsView);
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    private void addMeetingCallback() {
+        mainViewModel.toggleDetails();
+        refreshMeetingList();
+    }
+
+    private void closeDetails(){
+        meetingDetailsContainer.getChildren().clear();
     }
 }

@@ -13,6 +13,7 @@ public class AddNoteViewModel {
     Meeting contextMeeting;
 
     private NoteService noteService;
+    private Runnable onSave;
 
     private final StringProperty titleProperty = new SimpleStringProperty("");
     private final StringProperty contentProperty = new SimpleStringProperty("");
@@ -52,12 +53,25 @@ public class AddNoteViewModel {
             contentErrorProperty.set("This Field cannot be empty!");
         }else{
             noteService.createNote(titleProperty.getValue(), contentProperty.getValue(), contextMeeting);
+            cleanInputs();
+            if(this.onSave != null){
+                this.onSave.run();
+            }
         }
     }
 
     public void setErrorsBlank() {
         this.titleErrorProperty.set("");
         this.contentErrorProperty.set("");
+    }
+
+    private void cleanInputs() {
+        this.titleProperty.set("");
+        this.contentProperty.set("");
+    }
+
+    public void setOnSave(Runnable callback){
+        this.onSave = callback;
     }
 
 }

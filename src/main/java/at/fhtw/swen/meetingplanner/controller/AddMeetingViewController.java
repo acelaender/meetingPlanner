@@ -46,5 +46,9 @@ public class AddMeetingViewController {
         timeErrorLabel.textProperty().bindBidirectional(addMeetingViewModel.timeErrorProperty());
     }
 
+    public void setOnSave(Runnable onSave) {
+        addMeetingViewModel.setOnSave(onSave);
+    }
+
 
 }

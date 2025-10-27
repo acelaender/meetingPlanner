@@ -140,6 +140,10 @@ public class MeetingDetailController {
 
     }
 
+    @FXML
+    protected void onCloseButtonClick() {
+        meetingDetailViewModel.closeMeeting();
+    }
     public void setMeeting(Meeting meeting) throws IOException{
         this.meetingDetailViewModel.setMeeting(meeting);
 
@@ -150,6 +154,7 @@ public class MeetingDetailController {
 
         AddNoteViewController controller = loader.getController();
         controller.setMeeting(this.meetingDetailViewModel.getMeeting());
+        controller.setOnSave(this::addNoteCallback);
 
         formContainer.getChildren().add(formNode);
         formNode.visibleProperty().bind(meetingDetailViewModel.showAddMeetingForm());
@@ -179,5 +184,14 @@ public class MeetingDetailController {
                 e.printStackTrace();
             }
         }
+    }
+
+    private void addNoteCallback() {
+        refreshNoteList();
+        meetingDetailViewModel.toggleAddNoteForm();
+    }
+
+    public void setOnClose(Runnable onClose) {
+        meetingDetailViewModel.setOnClose(onClose);
     }
 }
