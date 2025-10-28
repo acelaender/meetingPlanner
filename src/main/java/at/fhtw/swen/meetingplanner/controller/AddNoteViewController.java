@@ -37,4 +37,8 @@ public class AddNoteViewController {
     protected void onSaveButtonClick(){
         this.addNoteViewModel.saveNote();
     }
+
+    public void setOnSave(Runnable onSave) {
+        addNoteViewModel.setOnSave(onSave);
+    }
 }

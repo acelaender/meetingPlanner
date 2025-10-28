@@ -26,6 +26,7 @@ public class MeetingDetailViewModel {
     //EDIT MEETING//
     private final BooleanProperty showEditMeeting = new SimpleBooleanProperty(false);
     private Runnable onSave;
+    private Runnable onClose;
 
 
     //TODO Rework Variables
@@ -105,7 +106,15 @@ public class MeetingDetailViewModel {
         return reportService.generateMeetingReport(this.meeting, filePath);
     }
 
+    public void closeMeeting() {
+        this.onClose.run();
+    }
+
     public void loadMeetings() {
         notes.setAll(noteService.getMeetingNotes(this.meeting));
+    }
+
+    public void setOnClose(Runnable callback) {
+        this.onClose = callback;
     }
 }
