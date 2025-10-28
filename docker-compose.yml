@@ -2,14 +2,13 @@ services:
   postgres:
     image: postgres:latest
     environment:
-      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/meetingplanner
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
-      POSTGRES_DB: meetingplanner
     ports:
       - "5432:5432"
     volumes:
-      - postgres-data:/var/lib/postgresql/data
+      - postgres-data:/var/lib/postgresql/
+      - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql
 
   pgadmin:
     image: dpage/pgadmin4:latest
