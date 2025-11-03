@@ -6,7 +6,6 @@ Notes:
     declared temporary h2 in-memory db in application.properties, for the future postgresql has to be declared and used
 
 BIG TODOS:
-TODO 3: adding testing
 TODO 5: Full Text Search
 TODO 6: Logging
 TODO 4: Protocol

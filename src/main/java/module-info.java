@@ -13,8 +13,6 @@ open module at.fhtw.swen.meetingplanner {
     requires kernel;
     requires layout;
 
-
-
     exports at.fhtw.swen.meetingplanner;
     exports at.fhtw.swen.meetingplanner.bl.model;
     exports at.fhtw.swen.meetingplanner.controller;

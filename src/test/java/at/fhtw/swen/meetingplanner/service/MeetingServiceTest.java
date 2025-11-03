@@ -3,11 +3,8 @@ package at.fhtw.swen.meetingplanner.service;
 import at.fhtw.swen.meetingplanner.bl.model.Meeting;
 import at.fhtw.swen.meetingplanner.bl.service.MeetingService;
 import at.fhtw.swen.meetingplanner.dal.repository.meetingRepository;
-import jakarta.transaction.Transactional;
 import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
-import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
 
