@@ -9,7 +9,9 @@ import javafx.scene.control.TextField;
 import javafx.util.converter.LocalTimeStringConverter;
 import org.springframework.stereotype.Component;
 
+import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 
 @Component
 public class AddMeetingViewController {
@@ -19,7 +21,6 @@ public class AddMeetingViewController {
     @FXML private TextField startTimeField;
     @FXML private TextField endTimeField;
     @FXML private TextArea agendaArea;
-    @FXML private Button saveButton;
 
     //Validation-Fields
     @FXML private Label titleErrorLabel;
@@ -32,18 +33,16 @@ public class AddMeetingViewController {
     public void initialize(){
         titleField.textProperty().bindBidirectional(addMeetingViewModel.titleProperty());
 
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm");
-        LocalTimeStringConverter converter = new LocalTimeStringConverter(formatter, null);
-
-        startTimeField.textProperty().bindBidirectional(addMeetingViewModel.startTimeProperty(), converter);
-        endTimeField.textProperty().bindBidirectional(addMeetingViewModel.endTimeProperty(), converter);
-
         agendaArea.textProperty().bindBidirectional(addMeetingViewModel.agendaProperty());
 
-        saveButton.setOnAction(e -> addMeetingViewModel.saveMeeting());
 
         titleErrorLabel.textProperty().bindBidirectional(addMeetingViewModel.titleErrorProperty());
         timeErrorLabel.textProperty().bindBidirectional(addMeetingViewModel.timeErrorProperty());
+    }
+
+    @FXML
+    public void onSubmit(){
+        this.addMeetingViewModel.saveMeeting(startTimeField.getText(), endTimeField.getText());
     }
 
     public void setOnSave(Runnable onSave) {

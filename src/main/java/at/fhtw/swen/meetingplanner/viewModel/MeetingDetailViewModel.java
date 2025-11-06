@@ -28,8 +28,6 @@ public class MeetingDetailViewModel {
     private Runnable onSave;
     private Runnable onClose;
 
-
-    //TODO Rework Variables
     private Meeting meeting;
 
 
@@ -52,6 +50,7 @@ public class MeetingDetailViewModel {
         this.endTime.set(meeting.getEndTime());
         this.agenda.set(meeting.getAgenda());
         this.meeting = meeting;
+        this.showEditMeeting.set(false);
     }
 
     public StringProperty titleProperty() {
@@ -100,6 +99,7 @@ public class MeetingDetailViewModel {
         this.meeting.setStartTime(startTime.get());
         this.meeting.setEndTime(endTime.get());
         meetingService.updateMeeting(meeting);
+        this.onClose.run();
     }
 
     public File exportMeeting(String filePath) throws IOException {

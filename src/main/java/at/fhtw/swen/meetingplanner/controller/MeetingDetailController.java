@@ -73,8 +73,10 @@ public class MeetingDetailController {
         }, meetingDetailViewModel.startTimeProperty(), meetingDetailViewModel.endTimeProperty()));
 
         //Editing Fields
-        titleField.textProperty().bind(meetingDetailViewModel.titleProperty());
-        agendaArea.textProperty().bind(meetingDetailViewModel.agendaProperty());
+        titleField.textProperty().bindBidirectional(meetingDetailViewModel.titleProperty());
+        agendaArea.textProperty().bindBidirectional(meetingDetailViewModel.agendaProperty());
+
+
         Bindings.bindBidirectional(startTimeField.textProperty(), meetingDetailViewModel.startTimeProperty(), new LocalTimeStringConverter(formatter, formatter));
         Bindings.bindBidirectional(endTimeField.textProperty(), meetingDetailViewModel.endTimeProperty(), new LocalTimeStringConverter(formatter, formatter));
 

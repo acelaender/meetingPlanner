@@ -5,15 +5,19 @@ import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
+import javafx.util.converter.LocalTimeStringConverter;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 
 @Component
 public class AddMeetingViewModel {
 
     private final MeetingService meetingService;
     private Runnable onSave;
+
 
     //Inputs//
     private final StringProperty title = new SimpleStringProperty("");
@@ -37,14 +41,29 @@ public class AddMeetingViewModel {
     }
 
 
-    public void saveMeeting() {
+    public void saveMeeting(String startTime, String endTime) {
         setErrorsBlank();
+
+        //converting time
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm");
+        LocalTimeStringConverter converter = new LocalTimeStringConverter(formatter, null);
+        try {
+            LocalTime localTimeStart = LocalTime.parse(startTime, formatter);
+            LocalTime localTimeEnd = LocalTime.parse(endTime, formatter);
+            this.startTime.set(localTimeStart);
+            this.endTime.set(localTimeEnd);
+        } catch (DateTimeParseException e) {
+            timeError();
+            return;
+        }
+
+        //
         if(title.getValue().isBlank()){
             titleErrorProperty.set("This Field cannot be empty!");
-        }else if(startTime.get() == null || endTime.get() == null){
+        }else if(this.startTime.get() == null || this.endTime.get() == null){
             timeErrorProperty.set("This Field cannot be empty!");
         }else{
-            meetingService.createMeeting(title.get(), startTime.get(), endTime.get(), agenda.get());
+            meetingService.createMeeting(title.get(), this.startTime.get(), this.endTime.get(), agenda.get());
             cleanInputs();
             if(this.onSave != null){
                 this.onSave.run();
@@ -76,4 +95,14 @@ public class AddMeetingViewModel {
         this.endTime.set(null);
     }
 
+    public void timeError(){
+        this.timeErrorProperty.set("This Field has to be of Format HH:mm");
+    }
+    public void setStartTime(LocalTime startTime) {
+        this.startTime.set(startTime);
+    }
+
+    public void setEndTime(LocalTime endTime) {
+        this.endTime.set(endTime);
+    }
 }

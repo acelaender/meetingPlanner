@@ -3,7 +3,6 @@ Notes:
  --add-reads at.fhtw.swen2.meetingplanner=ALL-UNNAMED
     because java doesnt read and open automatically to spring
 
-    declared temporary h2 in-memory db in application.properties, for the future postgresql has to be declared and used
 
 BIG TODOS:
 TODO 5: Full Text Search
@@ -11,6 +10,9 @@ TODO 6: Logging
 TODO 4: Protocol
 
 SMALL TODOS:
-    TODO 4: Meeting editing text fields are not all working only time
     TODO 2: Edit Meeting buttons in cards should call details with edit enabled
-    TODO 3: delete meeting should close details
+    TODO 3: delete meeting should close details -> going to take both buttons
+
+    TODO 1: leftover label at the meeting list
+    TODO 2: Move delete func into details
+    TODO 3: refresh button can probably be removed

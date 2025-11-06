@@ -103,5 +103,6 @@ public class MainViewController {
 
     private void closeDetails(){
         meetingDetailsContainer.getChildren().clear();
+        refreshMeetingList();
     }
 }

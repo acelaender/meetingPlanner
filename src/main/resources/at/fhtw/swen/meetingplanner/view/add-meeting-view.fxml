@@ -35,7 +35,7 @@
          <Label fx:id="timeErrorLabel" styleClass="warning-label" />
             <Label text="Agenda" />
             <TextArea fx:id="agendaArea" minHeight="-Infinity" prefHeight="200.0" prefWidth="200.0" />
-            <Button fx:id="saveButton" mnemonicParsing="false" styleClass="black-button" text="Create Meeting">
+            <Button fx:id="saveButton" mnemonicParsing="false" onAction="#onSubmit" styleClass="black-button" text="Create Meeting">
             <VBox.margin>
                <Insets top="15.0" />
             </VBox.margin></Button>
