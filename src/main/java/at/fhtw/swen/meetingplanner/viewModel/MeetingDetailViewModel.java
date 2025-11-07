@@ -110,6 +110,11 @@ public class MeetingDetailViewModel {
         this.onClose.run();
     }
 
+    public void deleteMeeting() {
+        this.meetingService.deleteMeeting(this.meeting);
+        closeMeeting();
+    }
+
     public void loadMeetings() {
         notes.setAll(noteService.getMeetingNotes(this.meeting));
     }

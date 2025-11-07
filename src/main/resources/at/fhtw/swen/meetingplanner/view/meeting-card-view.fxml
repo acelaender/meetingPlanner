@@ -38,7 +38,6 @@
                </padding>
             </HBox>
             <Label fx:id="titleLabel" styleClass="title2-label" text="Label" />
-            <Label fx:id="timeLabel" text="Label" />
             <Label fx:id="agendaLabel" text="Label" />
             <Button fx:id="expandMeetingButton" mnemonicParsing="false" onAction="#onExpandMeetingButtonClick" style="-fx-border-color: #c7c7c7; -fx-border-radius: 5;" styleClass="details-button" text="Show Details">
                <VBox.margin>

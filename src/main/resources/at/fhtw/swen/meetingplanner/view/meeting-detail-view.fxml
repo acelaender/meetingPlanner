@@ -9,6 +9,15 @@
    <children>
       <HBox alignment="TOP_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="4.0">
          <children>
+            <Button fx:id="deleteButton" mnemonicParsing="false" onAction="#onDeleteButtonClick" styleClass="transparent-image-button">
+               <graphic>
+                  <ImageView fitHeight="20" fitWidth="20" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../img/deleteButton.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
             <Button fx:id="editButton" mnemonicParsing="false" onAction="#onEditButtonClick" styleClass="transparent-image-button">
                <graphic>
                   <ImageView fitHeight="20" fitWidth="20" pickOnBounds="true" preserveRatio="true">

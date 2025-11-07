@@ -10,9 +10,6 @@ TODO 6: Logging
 TODO 4: Protocol
 
 SMALL TODOS:
-    TODO 2: Edit Meeting buttons in cards should call details with edit enabled
-    TODO 3: delete meeting should close details -> going to take both buttons
+    TODO 3: delete meeting is in detail view -> remove from card view
 
-    TODO 1: leftover label at the meeting list
-    TODO 2: Move delete func into details
     TODO 3: refresh button can probably be removed

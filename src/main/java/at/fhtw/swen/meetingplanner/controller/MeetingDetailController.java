@@ -146,6 +146,12 @@ public class MeetingDetailController {
     protected void onCloseButtonClick() {
         meetingDetailViewModel.closeMeeting();
     }
+
+    @FXML
+    protected void onDeleteButtonClick() {
+        meetingDetailViewModel.deleteMeeting();
+    }
+
     public void setMeeting(Meeting meeting) throws IOException{
         this.meetingDetailViewModel.setMeeting(meeting);
 
