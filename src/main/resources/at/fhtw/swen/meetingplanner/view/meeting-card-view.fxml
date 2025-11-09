@@ -2,34 +2,13 @@
 
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox prefHeight="357.0" prefWidth="600.0" stylesheets="@../styles/meetingCard.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="at.fhtw.swen.meetingplanner.controller.MeetingCardViewController">
+<VBox prefHeight="357.0" prefWidth="600.0" stylesheets="@../styles/meetingCard.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="at.fhtw.swen.meetingplanner.controller.MeetingCardViewController">
    <children>
       <VBox prefHeight="200.0" prefWidth="100.0" styleClass="card">
          <children>
             <HBox alignment="TOP_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="4.0">
-               <children>
-                  <Button fx:id="editButton" mnemonicParsing="false" styleClass="transparent-image-button">
-                     <graphic>
-                        <ImageView fitHeight="20" fitWidth="20" pickOnBounds="true" preserveRatio="true" styleClass="transparent-image-button">
-                           <image>
-                              <Image url="@../img/editButton.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </Button>
-                  <Button fx:id="deleteButton" mnemonicParsing="false" onAction="#onDeleteButtonClick" styleClass="transparent-image-button">
-                     <graphic>
-                        <ImageView fitHeight="20" fitWidth="20" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../img/deleteButton.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </Button>
-               </children>
                <VBox.margin>
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </VBox.margin>
