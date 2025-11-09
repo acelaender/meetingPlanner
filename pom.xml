@@ -100,6 +100,11 @@
             <artifactId>layout</artifactId>
             <version>9.0.0</version>
         </dependency>
+        <dependency>
+            <groupId>org.testfx</groupId>
+            <artifactId>testfx-junit5</artifactId>
+            <version>4.0.18</version>
+        </dependency>
 
     </dependencies>
 
@@ -138,9 +143,30 @@
                             <noManPages>true</noManPages>
                             <stripDebug>true</stripDebug>
                             <noHeaderFiles>true</noHeaderFiles>
+                            <argLine>
+                                --add-opens=java.base/java.lang=ALL-UNNAMED
+                                --add-opens at.fhtw.swen.meetingplanner/at.fhtw.swen.meetingplanner.dal.entity=ALL-UNNAMED
+                                --add-exports at.fhtw.swen.meetingplanner/at.fhtw.swen.meetingplanner.bl.service=ALL-UNNAMED
+                                --add-exports at.fhtw.swen.meetingplanner/at.fhtw.swen.meetingplanner.viewModel=ALL-UNNAMED
+                                --add-reads at.fhtw.swen.meetingplanner=ALL-UNNAMED
+                            </argLine>
                         </configuration>
                     </execution>
                 </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>3.2.5</version>
+                <configuration>
+                    <argLine>
+                        --add-opens javafx.graphics/com.sun.javafx.application=ALL-UNNAMED
+                        --add-opens javafx.graphics/com.sun.glass.ui=ALL-UNNAMED
+                        --add-opens javafx.graphics/com.sun.javafx.stage=ALL-UNNAMED
+                        --add-opens javafx.controls/com.sun.javafx.scene.control.behavior=ALL-UNNAMED
+                        --add-opens javafx.controls/com.sun.javafx.scene.control.inputmap=ALL-UNNAMED
+                    </argLine>
+                </configuration>
             </plugin>
         </plugins>
     </build>
