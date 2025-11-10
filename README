@@ -3,3 +3,4 @@ Notes:
  --add-reads at.fhtw.swen2.meetingplanner=ALL-UNNAMED
     because java doesnt read and open automatically to spring
 
+--add-opens=java.base/java.lang=ALL-UNNAMED --add-opens at.fhtw.swen.meetingplanner/at.fhtw.swen.meetingplanner.dal.entity=ALL-UNNAMED --add-exports at.fhtw.swen.meetingplanner/at.fhtw.swen.meetingplanner.bl.service=ALL-UNNAMED --add-exports at.fhtw.swen.meetingplanner/at.fhtw.swen.meetingplanner.viewModel=ALL-UNNAMED --add-reads at.fhtw.swen.meetingplanner=ALL-UNNAMED
