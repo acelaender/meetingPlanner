@@ -3,13 +3,3 @@ Notes:
  --add-reads at.fhtw.swen2.meetingplanner=ALL-UNNAMED
     because java doesnt read and open automatically to spring
 
-
-BIG TODOS:
-TODO 5: Full Text Search
-TODO 6: Logging
-TODO 4: Protocol
-
-SMALL TODOS:
-    TODO 3: delete meeting is in detail view -> remove from card view
-
-    TODO 3: refresh button can probably be removed

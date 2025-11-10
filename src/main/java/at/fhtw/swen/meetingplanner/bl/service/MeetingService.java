@@ -16,7 +16,6 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class MeetingService {
-    //TODO create Meeting can probably also be done with meeting
     private final meetingRepository meetingRepository;
     private static final Logger logger = LogManager.getLogger(MeetingService.class);
 
